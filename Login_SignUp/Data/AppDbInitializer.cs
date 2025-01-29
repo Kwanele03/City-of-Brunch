@@ -21,7 +21,7 @@ namespace Login_SignUp.Data
 
                 //Users
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-                string adminUserEmail = "admin@cob.com";
+                string adminUserEmail = "kwanele03@cob.com";
 
                 var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
                 if (adminUser == null)
@@ -53,9 +53,9 @@ namespace Login_SignUp.Data
                     await userManager.CreateAsync(newAppUser, "Coding@1234?");
                     await userManager.AddToRoleAsync(newAppUser, UserRoles.User);
                 }
-            
+            }
+        }
         
-    }
-}
+        
     }
 }
