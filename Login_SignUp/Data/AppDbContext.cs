@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace Login_SignUp.Data
 {
     public class AppDbContext : IdentityDbContext<ApplicationUser>

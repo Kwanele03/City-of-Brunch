@@ -13,25 +13,17 @@ namespace Login_SignUp.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly AppDbContext _context;
-        private readonly EmailVerifier _emailVerifier;
-
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context, EmailVerifier emailVerifier)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, AppDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
-            _emailVerifier = emailVerifier;
         }
-
-
-
         public async Task<IActionResult> Users()
         {
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
-
-
         public IActionResult Login() => View(new LoginVM());
 
         [HttpPost]
@@ -59,7 +51,6 @@ namespace Login_SignUp.Controllers
             return View(loginVM);
         }
 
-
         public IActionResult Register() => View(new RegisterVM());
 
         [HttpPost]
@@ -73,7 +64,6 @@ namespace Login_SignUp.Controllers
                 TempData["Error"] = "This email address is already in use";
                 return View(registerVM);
             }
-
             var newUser = new ApplicationUser()
             {
                 FullName = registerVM.FullName,
@@ -87,6 +77,7 @@ namespace Login_SignUp.Controllers
 
             return View("RegisterCompleted");
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Logout()

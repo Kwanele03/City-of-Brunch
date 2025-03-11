@@ -4,12 +4,10 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Login_SignUp.Data
 {
-    public class AppDbInitializer
-    {
-        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder)
-        {
-            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
-            {
+    public class AppDbInitializer {
+
+        public static async Task SeedUsersAndRolesAsync(IApplicationBuilder applicationBuilder) {
+            using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope()) {
 
                 //Roles
                 var roleManager = serviceScope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -21,13 +19,11 @@ namespace Login_SignUp.Data
 
                 //Users
                 var userManager = serviceScope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-                string adminUserEmail = "kwanele03@cob.com";
+                string adminUserEmail = "admin@cty.com";
 
                 var adminUser = await userManager.FindByEmailAsync(adminUserEmail);
-                if (adminUser == null)
-                {
-                    var newAdminUser = new ApplicationUser()
-                    {
+                if (adminUser == null) {
+                    var newAdminUser = new ApplicationUser() {
                         FullName = "Admin User",
                         UserName = "admin-user",
                         Email = adminUserEmail,
@@ -37,14 +33,11 @@ namespace Login_SignUp.Data
                     await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
                 }
 
-
-                string appUserEmail = "user@cob.com";
+                string appUserEmail = "user@cty.com";
 
                 var appUser = await userManager.FindByEmailAsync(appUserEmail);
-                if (appUser == null)
-                {
-                    var newAppUser = new ApplicationUser()
-                    {
+                if (appUser == null) {
+                    var newAppUser = new ApplicationUser() {
                         FullName = "Application User",
                         UserName = "app-user",
                         Email = appUserEmail,
@@ -55,7 +48,6 @@ namespace Login_SignUp.Data
                 }
             }
         }
-        
-        
+         
     }
 }
