@@ -1,0 +1,127 @@
+﻿@using Login_SignUp.Models
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "List of Products";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        body {
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set text color to white */
+        }
+
+        .row {
+            margin: 20px 0;
+        }
+
+        .card-header {
+            background-color: #343a40; /* Set card header background color */
+            color: white; /* Set card header text color to white */
+        }
+
+        .card {
+            background-color: #222; /* Set card background color */
+            color: white; /* Set card text color to white */
+            border: none;
+        }
+
+        .card-title {
+            color: white; /* Set card title text color to white */
+        }
+
+        .btn {
+            color: white;
+        }
+
+        .btn-outline-primary {
+            border-color: white;
+            color: white;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+            .btn-danger:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+
+        .btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+            .btn-success:hover {
+                background-color: #218838;
+                border-color: #1e7e34;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 col-xs-6 border-primary mb-3">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <div class="card-header text-white bg-info">
+                                    <p class="card-text">
+                                        <h5 class="card-title">
+                                            @item.name
+                                            @if (User.Identity.IsAuthenticated && User.IsInRole("StoreAdmin"))
+                                            {
+                                                <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                            }
+                                        </h5>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="@item.Logo" width="100%">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <p class="card-text"><b>Item: </b>@item.name</p>
+                                    <p class="card-text"><b>Category: </b>@item.Category</p>
+                                    <p class="card-text"><b>Specification: </b>@item.Specification</p>
+                                    <p class="card-text"><b>Price: </b>@item.Price</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-end">
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("StoreAdmin"))
+                                    {
+                                       
+                                        <a class="text-white ml-2" asp-action="Delete" asp-route-id="@item.Id">
+                                            <button class="btn btn-danger" style="height:60px">Delete</button>
+                                        </a>
+                                    }
+                                    <a class="btn btn-outline-primary ml-2" asp-action="Details" asp-route-id="@item.Id">
+                                        <i class="bi bi-eye-fill"></i> Details
+                                    </a>
+                                    <a class="btn btn-success ml-2 text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id">
+                                        <i class="bi bi-cart-plus"></i> Buy (Price @item.Price.ToString("C", new System.Globalization.CultureInfo("en-ZA")))
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
+
