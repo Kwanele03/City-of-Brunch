@@ -19,8 +19,6 @@ namespace Login_SignUp.Controllers
             _signInManager = signInManager;
             _context = context;
         }
-
-        [HttpGet]
         public async Task<IActionResult> Users()
         {
             var users = await _context.Users.ToListAsync();
