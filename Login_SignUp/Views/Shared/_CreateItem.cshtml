@@ -1,0 +1,14 @@
+﻿@model string;
+
+<html>
+<body>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <div style="position: relative; right: 25px; bottom: 25px;" class="text-white">
+            <a asp-controller="@Model" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Product
+            </a>
+        </div>
+    }
+</body>
+</html>

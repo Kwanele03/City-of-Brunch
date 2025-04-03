@@ -1,0 +1,66 @@
+﻿@using Login_SignUp.Models
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "List of Products";
+}
+<html>   
+<body> 
+<div class="container mt-5">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 col-xs-6 border-primary">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-12">
+                                <div class="product-card">
+                                    <p class="card-text">
+                                        <h5 class="card-title">
+                                            @item.Item
+                                            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                            {
+                                                <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                            }
+                                        </h5>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="@item.Logo" width="50%">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <p class="card-text"><b>Item: </b>@item.Item</p>
+                                    <p class="card-text"><b>Category: </b>@item.Category</p>
+                                    <p class="card-text"><b>Specification: </b>@item.Specification</p>
+                                    <p class="card-text"><b>Price: </b>@item.Price</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-end">
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                       
+                                        <a class="text-white ml-2" asp-action="Delete" asp-route-id="@item.Id">
+                                            <button class="btn btn-danger">Delete</button>
+                                        </a>
+                                    }
+                                    <a class="btn btn-outline-primary ml-2" asp-action="Details" asp-route-id="@item.Id">
+                                        <i class="bi bi-eye-fill"></i> Details
+                                    </a>
+                                    <a class="btn btn-success ml-2 text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id">
+                                        <i class="bi bi-cart-plus"></i> Buy (Price @item.Price.ToString("C", new System.Globalization.CultureInfo("en-ZA")))
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
+@await Html.PartialAsync("_CreateItem", "Product") 
+
+
