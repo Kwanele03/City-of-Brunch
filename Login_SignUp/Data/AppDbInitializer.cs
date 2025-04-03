@@ -19,8 +19,13 @@ namespace Login_SignUp.Data
                     {
                         new Product()
                         {
+<<<<<<< Updated upstream
                             name = "Ace",
                             Logo="\\Login_SignUp\\wwwroot\\img\\undraw_posting_photo.svg",
+=======
+                            Item = "Ace",
+                            Logo="/assets/images/Hp1.jpg",
+>>>>>>> Stashed changes
                             Category ="Maize meal",
                             Specification = "10 kg",
                             Price= 99,
