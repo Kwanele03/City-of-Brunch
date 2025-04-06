@@ -10,7 +10,7 @@ namespace Login_SignUp.Models
         [Display(Name = "Item")]
         [Required(ErrorMessage = "The Product Name is Required")]
         [StringLength(20, MinimumLength = 3, ErrorMessage = "The Item name must be between 3 to 20 chars")]
-        public string name { get; set; }
+        public string Item { get; set; }
         [Display(Name = "Photo")]
         [Required(ErrorMessage = "The Product Photo is Required")]
         public string Logo { get; set; }

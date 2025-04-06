@@ -1,36 +1,3 @@
-/*
-
-TemplateMo 591 villa agency
-
-https://templatemo.com/tm-591-villa-agency
-
-*/
-
-/* ---------------------------------------------
-Table of contents
-------------------------------------------------
-01. font & reset css
-02. reset
-03. global styles
-04. header
-05. banner
-06. features
-07. testimonials
-08. contact
-09. footer
-
---------------------------------------------- */
-/* 
----------------------------------------------
-font & reset css
---------------------------------------------- 
-*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900");
-/* 
----------------------------------------------
-reset
---------------------------------------------- 
-*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -215,23 +182,23 @@ Pre-loader Style
 */
 
 .js-preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.99);
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  opacity: 1;
-  visibility: visible;
-  z-index: 9999;
-  -webkit-transition: opacity 0.25s ease;
-  transition: opacity 0.25s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.99);
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    opacity: 1;
+    visibility: visible;
+    z-index: 9999;
+    -webkit-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
 }
 
 .js-preloader.loaded {
@@ -281,7 +248,7 @@ Pre-loader Style
   height: 16px;
   top: 12px;
   left: 15px;
-  background: #f35525;
+  background: #007BFF;
   border-radius: 50%;
   -webkit-transform: translateX(0);
   transform: translateX(0);
@@ -304,7 +271,7 @@ Pre-loader Style
   width: 16px;
   height: 16px;
   margin-left: 16px;
-  background: #f35525;
+  background: #007BFF;
   border-radius: 50%;
 }
 
@@ -745,15 +712,11 @@ Banner Style
 }
 
 .main-banner .item-1 {
-    background-image: url(../images/Logo.jpg);
+    background-image: url('../images/city of brunch.png');
 }
 
 .main-banner .item-2 {
-    background-image: url(../images/image-1-1024x1024-2884577337.png);
-}
-
-.main-banner .item-3 {
-    background-image: url(../images/Coding.jpeg);
+    background-image: url(../images/Logo.jpg);
 }
 
 .main-banner .item span.category {
@@ -949,56 +912,6 @@ Featured Style
   font-size: 15px;
   color: #aaa;
   font-weight: 400;
-}
-
-/* 
----------------------------------------------
-Video Style
---------------------------------------------- 
-*/
-
-.video {
-  background-image: url(../images/video-bg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  padding: 100px 0px 250px 0px;
-  position: relative;
-}
-
-.video-content {
-  margin-top: -240px;
-}
-
-.video .section-heading h2 {
-  color: #fff;
-}
-
-.video-content .video-frame {
-  position: relative;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-}
-
-.video-content .video-frame img {
-  border-radius: 10px;
-}
-
-.video-content .video-frame a {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-26px, -26px);
-  width: 52px;
-  height: 52px;
-  background-color: #fff;
-  border-radius: 50%;
-  display: inline-block;
-  text-align: center;
-  line-height: 52px;
-  color: #f35525;
-  outline: 15px solid rgba(254, 85, 37, 0.5);
-  font-size: 18px;
 }
 
 /* 
@@ -1214,122 +1127,6 @@ Properties Style
   text-align: center;
 }
 
-
-/* 
----------------------------------------------
-Contact Style
---------------------------------------------- 
-*/
-
-.contact {
-  background-image: url(../images/contact-bg.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  padding: 100px 0px 250px 0px;
-  position: relative;
-}
-
-.contact .section-heading h2 {
-  color: #fff;
-}
-
-.contact-content {
-  margin-top: -240px;
-  position: relative;
-  z-index: 1;
-}
-
-.contact-content #map {
-  border-radius: 10px;
-  margin-bottom: 60px;
-}
-
-.contact-content .item {
-  border-radius: 10px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  padding: 35px 30px;
-  background-color: #fff;
-}
-
-.contact-content .phone {
-  margin-right: 15px;
-}
-
-.contact-content .email {
-  margin-left: 15px;
-}
-
-.contact-content .item img {
-  float: left;
-  margin-right: 25px;
-  vertical-align: middle;
-}
-
-.contact-content .item h6 {
-  font-size: 20px;
-  font-weight: 600;
-  vertical-align: middle;
-}
-
-.contact-content .item h6 span {
-  font-size: 15px;
-  color: #aaaaaa;
-  font-weight: 400;
-}
-
-.contact-content #contact-form {
-  margin-left: 30px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  padding: 35px 30px;
-  background-color: #fff;
-}
-
-.contact-content #contact-form label {
-  font-size: 15px;
-  color: #3a3a3a;
-  margin-bottom: 15px;
-}
-
-.contact-content #contact-form input {
-  width: 100%;
-  height: 44px;
-  border-radius: 22px;
-  background-color: #f6f6f6;
-  border: none;
-  margin-bottom: 30px;
-  font-size: 14px;
-  padding: 0px 15px;
-}
-
-.contact-content #contact-form textarea {
-  width: 100%;
-  height: 150px;
-  max-height: 180px;
-  border-radius: 22px;
-  background-color: #f6f6f6;
-  border: none;
-  margin-bottom: 40px;
-  font-size: 14px;
-  padding: 15px 15px;
-}
-
-.contact-content #contact-form button {
-  background-color: #1e1e1e;
-  height: 44px;
-  border-radius: 22px;
-  padding: 0px 20px;
-  color: #fff;
-  border: none;
-  font-size: 15px;
-  font-weight: 500;
-  transition: all .5s;
-}
-
-.contact-content #contact-form button:hover {
-  background-color: #f35525;
-}
 
 
 /* 

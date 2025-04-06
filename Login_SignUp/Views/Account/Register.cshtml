@@ -1,19 +1,16 @@
 ﻿@using Login_SignUp.Data.ViewModels
 @model RegisterVM
-
 @{
     ViewData["Title"] = "Sign up for a new account";
 }
 <div class="container">
     <h4>@ViewData["Title"]</h4>
-
     @if (TempData["Error"] != null)
     {
         <div class="alert alert-danger">
             <b>Sorry!</b> - @TempData["Error"]
         </div>
     }
-
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <form asp-action="Register" class="needs-validation" novalidate>
