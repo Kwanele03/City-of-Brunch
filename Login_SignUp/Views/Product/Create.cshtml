@@ -1,0 +1,91 @@
+﻿@using Login_SignUp.Models
+@model Product
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Create a Product</title>
+	<style>
+		html, body {
+			background-color: black;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			color: white;
+		}
+
+		.text {
+			margin-top: 50px;
+		}
+
+		.form-group label {
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<div class="row text">
+		<div class="col-md-8 offset-2">
+			<p>
+				<h1>Add a New Product</h1>
+			</p>
+			<div class="row">
+				<div class="col-md-8 offset-2">
+					<form asp-action="Create">
+						<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+						<div class="form-group text-center">
+							<img id="LogoPreview" />
+						</div>
+						<div class="form-group">
+							<label asp-for="Logo" class="control-label"></label>
+							<input asp-for="Logo" class="form-control" />
+							<span asp-validation-for="Logo" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Item" class="control-label"></label>
+							<input asp-for="Item" class="form-control" />
+							<span asp-validation-for="Item" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Category" class="control-label"></label>
+							<input asp-for="Category" class="form-control" />
+							<span asp-validation-for="Category" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Specification" class="control-label"></label>
+							<input asp-for="Specification" class="form-control" />
+							<span asp-validation-for="Specification" class="text-danger"></span>
+						</div>
+						<div class="form-group">
+							<label asp-for="Price" class="control-label"></label>
+							<input asp-for="Price" class="form-control" />
+							<span asp-validation-for="Price" class="text-danger"></span>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" value="Create" class="btn btn-primary" />
+
+							<a class="btn btn-success" asp-action="Index">Show All</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+@section Scripts {
+	<script>
+		$(document).ready(function () {
+			var output = document.getElementById('LogoPreview')
+			output.src = $("#Logo").val();
+		})
+
+		$("#Logo").on("change", function () {
+			var output = document.getElementById('LogoPreview')
+			output.src = $(this).val();
+		})
+	</script>
+}					

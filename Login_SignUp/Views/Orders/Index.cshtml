@@ -1,0 +1,92 @@
+﻿@using Login_SignUp.Models
+@model List<Order>
+@{
+    ViewData["Title"] = "All orders";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-8 offset-2">
+            <h4 class="text-center mb-4">List of all your orders</h4>
+
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center white-text">Order ID</th>
+                        <th class="text-center">Items</th>
+                        <th class="text-center white-text">Total</th>
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <th class="text-center">User</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@order.Id</td>
+                            <td>
+                                <ul class="list-group">
+                                    @foreach (var item in order.OrderItems)
+                                    {
+                                        <li class="list-group-item">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="badge bg-success">@item.Amount</span>
+                                                [@item.Price.ToString("c")] - @item.Product.Item
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </td>
+                            <td class="text-center">
+                                @order.OrderItems.Select(m => m.Product.Price * m.Amount).Sum().ToString("c")
+                            </td>
+                            @if (User.Identity.IsAuthenticated && User.IsInRole("StoreAdmin"))
+                            {
+                                <td class="text-center"> @order.User.FullName </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+<style>
+
+    .table {
+        width: 100%;
+    }
+
+    th, td {
+        vertical-align: middle;
+    }
+
+    .list-group-item {
+        border: none;
+    }
+
+
+
+    th.white-text, td.white-text {
+        color: white; /* Set the text color to white for elements with the white-text class */
+    }
+
+    th {
+        background-color: #21C4D3; /* Set the background color of th elements */
+        color: white; /* Set the text color of th elements to white */
+    }
+
+    td {
+        color: black;
+    }
+
+</style>

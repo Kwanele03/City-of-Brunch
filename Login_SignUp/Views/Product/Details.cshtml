@@ -1,0 +1,58 @@
+﻿@using Login_SignUp.Models
+@model Product
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+@{
+    ViewData["Title"] = "Create a Product";
+}
+<style>
+    html, body {
+        background-color: black;
+        color: white;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+
+<div class="col-md-8 offset-2">
+    <div class="card mb-12">
+        <div class="row g-0">
+            <div class="col-md-12">
+                <div class="card-header text-white bg-info">
+                    <p class="card-text">
+                        <h5 class="card-title">
+                        </h5>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img src="@Model.Logo" width="100%" alt="@Model.Item">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <p class="card-text">@Model.Category</p>
+                    <p class="card-text">@Model.Specification</p>
+                    <p class="card-text">@Model.Price</p>
+
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card-footer">
+                    <p class="card-text">
+                        <a class="btn btn-outline-primary float-right" asp-action="Index">
+                            Back to List
+                        </a>
+                        <a class="btn btn-success text-white"
+                           asp-controller="Orders"
+                           asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i> Add to Cart (Price @Model.Price.ToString("c"))</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

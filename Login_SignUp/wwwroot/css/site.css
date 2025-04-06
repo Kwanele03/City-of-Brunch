@@ -12,7 +12,12 @@ html {
   position: relative;
   min-height: 100%;
 }
+body {
+    background-color: black; /* Set the background color to black */
+    color: white;
+}
 
 body {
   margin-bottom: 60px;
 }
+
